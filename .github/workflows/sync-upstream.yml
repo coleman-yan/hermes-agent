@@ -27,7 +27,7 @@ jobs:
         run: |
           git checkout main
           git merge upstream/main --allow-unrelated-histories --no-edit
-        # 如果出现冲突，GitHub Actions 会失败并显示日志，方便你手动处理
+        # 如果出现冲突，GitHub Actions 会失败并显示日志
 
       - name: Push back to your fork
         run: git push origin main
