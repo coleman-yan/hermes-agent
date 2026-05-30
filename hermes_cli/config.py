@@ -683,6 +683,13 @@ DEFAULT_CONFIG = {
         # (docker/modal/ssh — they have their own probe).  Set False to
         # disable entirely.
         "environment_probe": True,
+        # Embedder-supplied environment description appended to the system
+        # prompt's environment-hints block. Lets a host that wraps Hermes
+        # (sandbox runner, managed platform) explain the runtime environment
+        # — proxy, credential handling, mount layout — without editing the
+        # identity slot (SOUL.md). Empty by default. The HERMES_ENVIRONMENT_HINT
+        # env var overrides this (build-time/container mechanism).
+        "environment_hint": "",
         # Staged inactivity warning: send a warning to the user at this
         # threshold before escalating to a full timeout.  The warning fires
         # once per run and does not interrupt the agent.  0 = disable warning.
@@ -1195,6 +1202,13 @@ DEFAULT_CONFIG = {
         # class of over-claim that otherwise forces users to run
         # `git status` to verify edits landed.  Set false to suppress.
         "file_mutation_verifier": True,
+        # Turn-completion explainer.  When true (default), the agent appends a
+        # one-line explanation to its final response whenever a turn ends
+        # abnormally with no usable reply — empty content after retries, a
+        # partial/truncated stream, a still-pending tool result, or an
+        # iteration/budget limit.  Replaces the bare "(empty)" sentinel so the
+        # failure isn't silent from the UI's perspective.  Set false to suppress.
+        "turn_completion_explainer": True,
         "show_cost": False,       # Show $ cost in the status bar (off by default)
         "skin": "default",
         # UI language for static user-facing messages (approval prompts, a
